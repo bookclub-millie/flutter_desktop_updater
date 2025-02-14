@@ -63,7 +63,7 @@ class DesktopUpdaterController extends ChangeNotifier {
 
   void init(Uri url) {
     _appArchiveUrl = url;
-    checkVersion();
+    // checkVersion();
     notifyListeners();
   }
 
@@ -73,7 +73,7 @@ class DesktopUpdaterController extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> checkVersion() async {
+  Future<bool?> checkVersion() async {
     if (_appArchiveUrl == null) {
       throw Exception("App archive URL is not set");
     }
@@ -106,6 +106,7 @@ class DesktopUpdaterController extends ChangeNotifier {
       needUpdateNotifier.value = _needUpdate;
       notifyListeners();
     }
+    return _needUpdate;
   }
 
   Future<void> downloadUpdate() async {
