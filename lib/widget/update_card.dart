@@ -13,8 +13,7 @@ class _UpdateCardState extends State<UpdateCard> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final desktopInheritedNotifier =
-            DesktopUpdaterInheritedNotifier.of(context);
+        final desktopInheritedNotifier = DesktopUpdaterInheritedNotifier.of(context);
         final notifier = desktopInheritedNotifier?.notifier;
 
         if (constraints.maxHeight < 100) {
@@ -40,22 +39,14 @@ class _UpdateCardState extends State<UpdateCard> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                notifier?.getLocalization
-                                        ?.updateAvailableText ??
-                                    "Update Available",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSurface,
+                                notifier?.getLocalization?.updateAvailableText ?? "Update Available",
+                                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      color: Theme.of(context).colorScheme.onSurface,
                                     ),
                               ),
                               Text(
                                 getLocalizedString(
-                                      notifier?.getLocalization
-                                          ?.newVersionAvailableText,
+                                      notifier?.getLocalization?.newVersionAvailableText,
                                       [
                                         notifier?.appName,
                                         notifier?.appVersion,
@@ -69,13 +60,8 @@ class _UpdateCardState extends State<UpdateCard> {
                                       ],
                                     )) ??
                                     "",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSurfaceVariant,
+                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                                     ),
                               ),
                             ],
@@ -107,9 +93,7 @@ class _UpdateCardState extends State<UpdateCard> {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .surfaceContainerLowest,
+                                color: Theme.of(context).colorScheme.surfaceContainerLowest,
                                 borderRadius: BorderRadius.circular(22),
                               ),
                               child: Padding(
@@ -126,19 +110,14 @@ class _UpdateCardState extends State<UpdateCard> {
                         ),
                         const SizedBox(height: 24),
                         Text(
-                          notifier?.getLocalization?.updateAvailableText ??
-                              "Update Available",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(
+                          notifier?.getLocalization?.updateAvailableText ?? "Update Available",
+                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                 color: Theme.of(context).colorScheme.onSurface,
                               ),
                         ),
                         Text(
                           getLocalizedString(
-                                notifier
-                                    ?.getLocalization?.newVersionAvailableText,
+                                notifier?.getLocalization?.newVersionAvailableText,
                                 [
                                   notifier?.appName,
                                   notifier?.appVersion,
@@ -152,12 +131,9 @@ class _UpdateCardState extends State<UpdateCard> {
                                 ],
                               )) ??
                               "",
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onSurfaceVariant,
-                                  ),
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                              ),
                         ),
                         const SizedBox(height: 16),
                         Text(
@@ -171,24 +147,19 @@ class _UpdateCardState extends State<UpdateCard> {
                               (getLocalizedString(
                                 "New version is ready to download, click the button below to start downloading. This will download {} MB of data.",
                                 [
-                                  ((notifier?.downloadSize ?? 0) / 1024)
-                                      .toStringAsFixed(2),
+                                  ((notifier?.downloadSize ?? 0) / 1024).toStringAsFixed(2),
                                 ],
                               )) ??
                               "",
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onSurfaceVariant,
-                                  ),
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                              ),
                         ),
                         const SizedBox(height: 24),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            if ((notifier?.isDownloading ?? false) &&
-                                !(notifier?.isDownloaded ?? false))
+                            if ((notifier?.isDownloading ?? false) && !(notifier?.isDownloaded ?? false))
                               Row(
                                 children: [
                                   FilledButton.icon(
@@ -210,13 +181,11 @@ class _UpdateCardState extends State<UpdateCard> {
                                   ),
                                 ],
                               )
-                            else if (notifier?.isDownloading == false &&
-                                (notifier?.isDownloaded ?? false))
+                            else if (notifier?.isDownloading == false && (notifier?.isDownloaded ?? false))
                               FilledButton.icon(
                                 icon: const Icon(Icons.restart_alt),
                                 label: Text(
-                                  notifier?.getLocalization?.restartText ??
-                                      "Restart to update",
+                                  notifier?.getLocalization?.restartText ?? "Restart to update",
                                 ),
                                 onPressed: () {
                                   showDialog(
@@ -224,13 +193,10 @@ class _UpdateCardState extends State<UpdateCard> {
                                     builder: (context) {
                                       return AlertDialog(
                                         title: Text(
-                                          notifier?.getLocalization
-                                                  ?.warningTitleText ??
-                                              "Are you sure?",
+                                          notifier?.getLocalization?.warningTitleText ?? "Are you sure?",
                                         ),
                                         content: Text(
-                                          notifier?.getLocalization
-                                                  ?.restartWarningText ??
+                                          notifier?.getLocalization?.restartWarningText ??
                                               "A restart is required to complete the update installation.\nAny unsaved changes will be lost. Would you like to restart now?",
                                         ),
                                         actions: [
@@ -239,9 +205,7 @@ class _UpdateCardState extends State<UpdateCard> {
                                               Navigator.of(context).pop();
                                             },
                                             child: Text(
-                                              notifier?.getLocalization
-                                                      ?.warningCancelText ??
-                                                  "Not now",
+                                              notifier?.getLocalization?.warningCancelText ?? "Not now",
                                             ),
                                           ),
                                           TextButton(
@@ -249,9 +213,7 @@ class _UpdateCardState extends State<UpdateCard> {
                                               notifier?.restartApp();
                                             },
                                             child: Text(
-                                              notifier?.getLocalization
-                                                      ?.warningConfirmText ??
-                                                  "Restart",
+                                              notifier?.getLocalization?.warningConfirmText ?? "Restart",
                                             ),
                                           ),
                                         ],
@@ -266,10 +228,7 @@ class _UpdateCardState extends State<UpdateCard> {
                                 children: [
                                   FilledButton.icon(
                                     icon: const Icon(Icons.download),
-                                    label: Text(
-                                      notifier?.getLocalization?.downloadText ??
-                                          "Download",
-                                    ),
+                                    label: const Text("다운로드"),
                                     onPressed: notifier?.downloadUpdate,
                                   ),
                                   const SizedBox(
@@ -278,171 +237,137 @@ class _UpdateCardState extends State<UpdateCard> {
                                   if ((notifier?.isMandatory ?? false) == false)
                                     OutlinedButton.icon(
                                       icon: const Icon(Icons.close),
-                                      label: Text(
-                                        notifier?.getLocalization
-                                                ?.skipThisVersionText ??
-                                            "Skip this version",
-                                      ),
+                                      label: const Text("다음에 하기"),
                                       onPressed: () {
+                                        Navigator.of(context).pop();
                                         notifier?.makeSkipUpdate();
                                       },
                                     ),
                                 ],
                               ),
                             // Release notes
-                            IconButton(
-                              tooltip: "Release notes",
-                              iconSize: 24,
-                              onPressed: () {
-                                showModalBottomSheet(
-                                  context: context,
-                                  showDragHandle: true,
-                                  builder: (context) {
-                                    return SafeArea(
-                                      child: ClipRRect(
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(22),
-                                          topRight: Radius.circular(22),
-                                        ),
-                                        child: DraggableScrollableSheet(
-                                          expand: false,
-                                          shouldCloseOnMinExtent: false,
-                                          snapSizes: const [0.6, 1],
-                                          initialChildSize: 0.6,
-                                          minChildSize: 0.6,
-                                          snap: true,
-                                          builder: (context, scrollController) {
-                                            return StatefulBuilder(
-                                              builder: (context, setState) {
-                                                return GestureDetector(
-                                                  onTap: () {
-                                                    FocusScope.of(context)
-                                                        .unfocus();
-                                                  },
-                                                  child: Scaffold(
-                                                    backgroundColor: Theme.of(
-                                                      context,
-                                                    )
-                                                        .colorScheme
-                                                        .surfaceContainerLow,
-                                                    body: Padding(
-                                                      padding: const EdgeInsets
-                                                          .symmetric(
-                                                        horizontal: 16,
-                                                      ),
-                                                      child: CustomScrollView(
-                                                        controller:
-                                                            scrollController,
-                                                        slivers: <Widget>[
-                                                          SliverList(
-                                                            delegate:
-                                                                SliverChildListDelegate([
-                                                              Text(
-                                                                "Release notes",
-                                                                style: Theme.of(
-                                                                  context,
-                                                                )
-                                                                    .textTheme
-                                                                    .bodyLarge
-                                                                    ?.copyWith(
-                                                                      color: Theme
-                                                                              .of(
-                                                                        context,
-                                                                      )
-                                                                          .colorScheme
-                                                                          .onSurface,
-                                                                    ),
-                                                              ),
-                                                              const SizedBox(
-                                                                height: 16,
-                                                              ),
-                                                              Text(
-                                                                notifier?.releaseNotes
-                                                                        ?.map(
-                                                                          (e) =>
-                                                                              "• ${e?.message}\n",
-                                                                        )
-                                                                        .join() ??
-                                                                    "",
-                                                                style: Theme.of(
-                                                                  context,
-                                                                )
-                                                                    .textTheme
-                                                                    .bodyMedium
-                                                                    ?.copyWith(
-                                                                      color: Theme
-                                                                              .of(
-                                                                        context,
-                                                                      )
-                                                                          .colorScheme
-                                                                          .onSurfaceVariant,
-                                                                    ),
-                                                              ),
-                                                            ]),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    bottomNavigationBar:
-                                                        Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                        bottom: 8,
-                                                      ),
-                                                      child: Container(
-                                                        margin: EdgeInsets.zero,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .all(
-                                                            Radius.circular(12),
-                                                          ),
-                                                          color: Theme.of(
-                                                            context,
-                                                          )
-                                                              .colorScheme
-                                                              .surfaceContainerLow,
-                                                        ),
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .symmetric(
-                                                          horizontal: 8,
-                                                        ),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.min,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .end,
-                                                          children: [
-                                                            TextButton(
-                                                              onPressed: () {
-                                                                Navigator.of(
-                                                                  context,
-                                                                ).pop();
-                                                              },
-                                                              child: const Text(
-                                                                "Close",
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                              icon: const Icon(Icons.description_outlined),
-                            ),
+                            // IconButton(
+                            //   tooltip: "Release notes",
+                            //   iconSize: 24,
+                            //   onPressed: () {
+                            //     showModalBottomSheet(
+                            //       context: context,
+                            //       showDragHandle: true,
+                            //       builder: (context) {
+                            //         return SafeArea(
+                            //           child: ClipRRect(
+                            //             borderRadius: const BorderRadius.only(
+                            //               topLeft: Radius.circular(22),
+                            //               topRight: Radius.circular(22),
+                            //             ),
+                            //             child: DraggableScrollableSheet(
+                            //               expand: false,
+                            //               shouldCloseOnMinExtent: false,
+                            //               snapSizes: const [0.6, 1],
+                            //               initialChildSize: 0.6,
+                            //               minChildSize: 0.6,
+                            //               snap: true,
+                            //               builder: (context, scrollController) {
+                            //                 return StatefulBuilder(
+                            //                   builder: (context, setState) {
+                            //                     return GestureDetector(
+                            //                       onTap: () {
+                            //                         FocusScope.of(context).unfocus();
+                            //                       },
+                            //                       child: Scaffold(
+                            //                         backgroundColor: Theme.of(
+                            //                           context,
+                            //                         ).colorScheme.surfaceContainerLow,
+                            //                         body: Padding(
+                            //                           padding: const EdgeInsets.symmetric(
+                            //                             horizontal: 16,
+                            //                           ),
+                            //                           child: CustomScrollView(
+                            //                             controller: scrollController,
+                            //                             slivers: <Widget>[
+                            //                               SliverList(
+                            //                                 delegate: SliverChildListDelegate([
+                            //                                   Text(
+                            //                                     "Release notes",
+                            //                                     style: Theme.of(
+                            //                                       context,
+                            //                                     ).textTheme.bodyLarge?.copyWith(
+                            //                                           color: Theme.of(
+                            //                                             context,
+                            //                                           ).colorScheme.onSurface,
+                            //                                         ),
+                            //                                   ),
+                            //                                   const SizedBox(
+                            //                                     height: 16,
+                            //                                   ),
+                            //                                   Text(
+                            //                                     notifier?.releaseNotes
+                            //                                             ?.map(
+                            //                                               (e) => "• ${e?.message}\n",
+                            //                                             )
+                            //                                             .join() ??
+                            //                                         "",
+                            //                                     style: Theme.of(
+                            //                                       context,
+                            //                                     ).textTheme.bodyMedium?.copyWith(
+                            //                                           color: Theme.of(
+                            //                                             context,
+                            //                                           ).colorScheme.onSurfaceVariant,
+                            //                                         ),
+                            //                                   ),
+                            //                                 ]),
+                            //                               ),
+                            //                             ],
+                            //                           ),
+                            //                         ),
+                            //                         bottomNavigationBar: Padding(
+                            //                           padding: const EdgeInsets.only(
+                            //                             bottom: 8,
+                            //                           ),
+                            //                           child: Container(
+                            //                             margin: EdgeInsets.zero,
+                            //                             decoration: BoxDecoration(
+                            //                               borderRadius: const BorderRadius.all(
+                            //                                 Radius.circular(12),
+                            //                               ),
+                            //                               color: Theme.of(
+                            //                                 context,
+                            //                               ).colorScheme.surfaceContainerLow,
+                            //                             ),
+                            //                             padding: const EdgeInsets.symmetric(
+                            //                               horizontal: 8,
+                            //                             ),
+                            //                             child: Row(
+                            //                               mainAxisSize: MainAxisSize.min,
+                            //                               mainAxisAlignment: MainAxisAlignment.end,
+                            //                               children: [
+                            //                                 TextButton(
+                            //                                   onPressed: () {
+                            //                                     Navigator.of(
+                            //                                       context,
+                            //                                     ).pop();
+                            //                                   },
+                            //                                   child: const Text(
+                            //                                     "Close",
+                            //                                   ),
+                            //                                 ),
+                            //                               ],
+                            //                             ),
+                            //                           ),
+                            //                         ),
+                            //                       ),
+                            //                     );
+                            //                   },
+                            //                 );
+                            //               },
+                            //             ),
+                            //           ),
+                            //         );
+                            //       },
+                            //     );
+                            //   },
+                            //   icon: const Icon(Icons.description_outlined),
+                            // ),
                           ],
                         ),
                       ],

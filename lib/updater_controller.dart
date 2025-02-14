@@ -14,6 +14,8 @@ class DesktopUpdaterController extends ChangeNotifier {
   DesktopUpdateLocalization? localization;
   DesktopUpdateLocalization? get getLocalization => localization;
 
+  ValueNotifier<bool> needUpdateNotifier = ValueNotifier<bool>(false);
+
   String? _appName;
   String? get appName => _appName;
 
@@ -90,8 +92,7 @@ class DesktopUpdaterController extends ChangeNotifier {
       // Calculate total length in KB
       _downloadSize = (versionResponse?.changedFiles?.fold<double>(
             0,
-            (previousValue, element) =>
-                previousValue + ((element?.length ?? 0) / 1024.0),
+            (previousValue, element) => previousValue + ((element?.length ?? 0) / 1024.0),
           )) ??
           0.0;
 
@@ -102,7 +103,7 @@ class DesktopUpdaterController extends ChangeNotifier {
       _appVersion = versionResponse?.version;
 
       print("Need update: $_needUpdate");
-
+      needUpdateNotifier.value = _needUpdate;
       notifyListeners();
     }
   }
