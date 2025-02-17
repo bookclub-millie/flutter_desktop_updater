@@ -28,11 +28,11 @@ class _UpdateCardState extends State<UpdateCard> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      IconButton.filled(
-                        onPressed: () {},
-                        icon: const Icon(Icons.update),
-                      ),
-                      const SizedBox(width: 16),
+                      // IconButton.filled(
+                      //   onPressed: () {},
+                      //   icon: const Icon(Icons.update),
+                      // ),
+                      // const SizedBox(width: 16),
                       Row(
                         children: [
                           Column(
@@ -88,27 +88,27 @@ class _UpdateCardState extends State<UpdateCard> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.surfaceContainerLowest,
-                                borderRadius: BorderRadius.circular(22),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Icon(
-                                  Icons.update,
-                                  size: 24,
-                                  opticalSize: 24,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 24),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     Container(
+                        //       decoration: BoxDecoration(
+                        //         color: Theme.of(context).colorScheme.surfaceContainerLowest,
+                        //         borderRadius: BorderRadius.circular(22),
+                        //       ),
+                        //       child: Padding(
+                        //         padding: const EdgeInsets.all(8),
+                        //         child: Icon(
+                        //           Icons.update,
+                        //           size: 24,
+                        //           opticalSize: 24,
+                        //           color: Theme.of(context).colorScheme.primary,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
+                        // const SizedBox(height: 24),
                         Text(
                           notifier?.getLocalization?.updateAvailableText ?? "Update Available",
                           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
