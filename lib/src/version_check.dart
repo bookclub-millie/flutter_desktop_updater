@@ -37,8 +37,7 @@ Future<ItemModel?> versionCheckFunction({
 
     // temp dizinindeki dosyaları kopyala
     // dir + output.txt dosyası oluşturulur
-    final outputFile =
-        File("${tempDir.path}${Platform.pathSeparator}app-archive.json");
+    final outputFile = File("${tempDir.path}${Platform.pathSeparator}app-archive.json");
 
     // Çıktı dosyasını açıyoruz
     final sink = outputFile.openWrite();
@@ -124,11 +123,12 @@ Future<ItemModel?> versionCheckFunction({
 
       if (newHashFileResponse.statusCode != 200) {
         client.close();
-        throw const HttpException("Failed to download hashes.json");
+
+        throw HttpException(
+            "Failed to download hashes.json | downloaded to ${tempDir.path}, path : $newHashFileUrl, status code: ${newHashFileResponse.statusCode}, reason: ${newHashFileResponse.reasonPhrase}");
       }
 
-      final outputFile =
-          File("${tempDir.path}${Platform.pathSeparator}hashes.json");
+      final outputFile = File("${tempDir.path}${Platform.pathSeparator}hashes.json");
       final sink = outputFile.openWrite();
 
       await newHashFileResponse.stream.listen(
